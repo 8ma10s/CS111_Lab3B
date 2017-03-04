@@ -100,10 +100,15 @@ for k, v in errorBlock.items():
     count = 0
     print >> output, "UNALLOCATED BLOCK <", k, "> REFERENCED BY",
     for pair in v:
-        if count == len(v) - 1:
-            print >> output, "INODE <", pair[0], "> ENTRY <", pair[1], ">"
+        print >> output, "INODE <", pair[0], ">",
+        if pair[2] != -1:
+            print >> output, "INDIRECT BLOCK <", pair[2], ">",
+        print >> output, "ENTRY <", pair[1],
+        if count == len(v) -1:
+            print >> output, ">"
         else:
-            print >> output, "INODE <", pair[0], "> ENTRY <", pair[1], ">",
+            print >> output, ">",
+        count += 1
 
 #PART 2: DUPLICATELY ALLOCATED BLOCK
 
@@ -111,10 +116,14 @@ for k, v in dupBlock.items():
     count = 0
     print >> output,  "MULTIPLY REFERENCED BLOCK <", k, "> BY",
     for pair in v:
+        print >> output, "INODE <", pair[0], ">",
+        if pair[2] != -1:
+            print >> output, "INDIRECT BLOCK <", pair[2], ">",
+        print >> output, "ENTRY <", pair[1],
         if count == len(v) - 1:
-            print >> output, "INODE <", pair[0], "> ENTRY <", pair[1], ">"
+            print >> output, ">"
         else:
-            print >> output, "INODE <", pair[0], "> ENTRY <", pair[1], ">",
+            print >> output, ">",
         count += 1
 
 #PART 3: UNALLOCATED INODE
