@@ -1,0 +1,13 @@
+UID:804608241
+
+INCLUDED FILES
+lab3b.py: a python script that outputs specific errors dectected from the csv file into file called lab3b_check.txt
+Makefile:contains information about compilation and execution
+lab3b_check.txt: output file created by lab3b.py
+README: essential information about all files
+
+Makefile info:
+build (default): compile (which is not needed)
+run: execution
+dist: create tar file
+clean: remove all components made by Makefile
